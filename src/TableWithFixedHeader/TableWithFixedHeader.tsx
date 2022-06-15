@@ -1,8 +1,7 @@
 import { ReactElement, memo } from 'react';
-import { Table } from "../"
-import { BodyProps} from "../Body"
-import { HeadProps} from "../Head"
-import { TableProps } from "../Table"
+import { BodyProps } from "../Body"
+import { HeadProps } from "../Head"
+import { Table, TableProps } from "../Table"
 import classnames from 'classnames';
 import './TableWithFixedHeader.scss';
 
