@@ -4,9 +4,9 @@ module.exports = {
   },
 
   getFileName: function (path) {
-    if (path === './src/index.ts') {
-      return 'srcIndex'
-    }
+    // if (path === './src/index.ts') {
+    //   return 'srcIndex'
+    // }
     return this.toLowerCaseFirstLetter(
       path.split("/").pop().replace(/\/*\.tsx?/, '')
     )

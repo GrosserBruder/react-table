@@ -12,7 +12,7 @@ const dependOn = {
   editableCell: ['Cell'],
   // head: [],
   headCell: ['Cell'],
-  srcIndex: ['Table', 'Body', 'Cell', 'HeadCell', 'Head', 'Row', 'EditableCell'],
+  index: ['Table', 'Body', 'Cell', 'HeadCell', 'Head', 'Row', 'EditableCell'],
   // row: [],
   table: ['Body', 'Head'],
   tableWithFixedHeader: ['Table', 'Body', 'Head'],
@@ -26,7 +26,9 @@ const entries = glob.sync('./src/**/*.ts*')
 
     const obj = {}
     obj['import'] = path
-    obj['dependOn'] = dependOn[fileName]
+    if (dependOn[fileName]) {
+      // obj['dependOn'] = dependOn[fileName]
+    }
 
     acc[entry] = obj
 
@@ -67,9 +69,11 @@ module.exports = {
   },
   optimization: {
     minimize: false,
-    splitChunks: {
-      chunks: 'all',
-    }
+    // concatenateModules: false,
+    // runtimeChunk: 'single',
+    // splitChunks: {
+    //   chunks: 'all',
+    // }
   },
   target: "web",
 }

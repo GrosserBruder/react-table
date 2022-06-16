@@ -19,7 +19,7 @@ export type TableProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function Table(props: TableProps, ref: ForwardedRef<any>) {
+function _Table(props: TableProps, ref: ForwardedRef<any>) {
   const { children, containerProps = {}, cellShadow, noBorder, separateBorder, striped } = props;
   const { className: containerClassName, ...otherContainerProps } = containerProps
   const className = classnames('table', props.className, {
@@ -36,4 +36,6 @@ function Table(props: TableProps, ref: ForwardedRef<any>) {
   </div>
 }
 
-export default forwardRef(Table)
+export const Table = forwardRef(_Table)
+
+export default Table
