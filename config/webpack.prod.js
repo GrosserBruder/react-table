@@ -1,50 +1,57 @@
 const path = require('path');
-const glob = require('glob')
 const nodeExternals = require('webpack-node-externals');
-const helpers = require('./helpers')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const typeScriptRegex = /\.(ts|tsx)$/;
 const sassRegex = /\.(scss|sass)$/;
 
-const dependOn = {
-  // body: [],
-  // cell: [],
-  editableCell: ['Cell'],
-  // head: [],
-  headCell: ['Cell'],
-  index: ['Table', 'Body', 'Cell', 'HeadCell', 'Head', 'Row', 'EditableCell'],
-  // row: [],
-  table: ['Body', 'Head'],
-  tableWithFixedHeader: ['Table', 'Body', 'Head'],
+const entries = {
+  Body: './src/Body.tsx',
+  Cell: './src/Cell.tsx',
+  Head: './src/Head.tsx',
+  Row: './src/Row.tsx',
+  EditableCell: {
+    import: './src/EditableCell.tsx',
+    dependOn: ['Cell']
+  },
+  HeadCell: {
+    import: './src/HeadCell.tsx',
+    dependOn: ['Cell']
+  },
+  Table: {
+    import: './src/Table.tsx',
+    dependOn: ['Body', 'Head']
+  },
+  TableWithFixedHeader: {
+    import: './src/TableWithFixedHeader.tsx',
+    dependOn: ['Body', 'Head', 'Table']
+  },
+  index: {
+    import: './src/index.ts',
+    dependOn: [
+      'Body',
+      'Cell',
+      'Head',
+      'Row',
+      'HeadCell',
+      'EditableCell',
+      'Table',
+    ]
+  },
 }
 
-const entries = glob.sync('./src/**/*.ts*')
-  .reduce((acc, path) => {
-    const fileName = helpers.getFileName(path)
-
-    const entry = path.replace(/\/*\.tsx?/, '').replace(/\.\/src\//, '')
-
-    const obj = {}
-    obj['import'] = path
-    if (dependOn[fileName]) {
-      // obj['dependOn'] = dependOn[fileName]
-    }
-
-    acc[entry] = obj
-
-    return acc
-  }, {})
-
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   externals: [nodeExternals()],
+  devtool: 'source-map',
   entry: entries,
   output: {
     path: path.resolve(__dirname, '../dist'),
     clean: true,
-    library: "react-table",
+    // library: "react-table",
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
+    // globalObject: 'this'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -53,13 +60,19 @@ module.exports = {
     rules: [
       {
         test: typeScriptRegex,
-        loader: 'ts-loader',
-        options: {
-          configFile: 'tsconfig.prod.json'
-        }
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: 'tsconfig.prod.json'
+            }
+          }
+        ]
+
       },
       {
-        test: sassRegex, use: [
+        test: sassRegex,
+        use: [
           "style-loader",
           "css-loader",
           "sass-loader"
@@ -67,13 +80,23 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled',
+      generateStatsFile: true,
+      statsOptions: { source: false }
+    })
+  ],
   optimization: {
     minimize: false,
-    // concatenateModules: false,
+    concatenateModules: false,
     // runtimeChunk: 'single',
     // splitChunks: {
     //   chunks: 'all',
+    //   // maxInitialRequests: Infinity,
+    //   // minSize: 0,
     // }
+    mergeDuplicateChunks: false,
   },
   target: "web",
 }
