@@ -20,13 +20,16 @@
   },
   "license": "MIT",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist/**"
   ],
   "scripts": {
-    "pub": "npm run build && npm publish",
-    "build": "tsc -p tsconfig.prod.json"
+    "clean": "rimraf dist",
+    "copy:styles": "cpx src/style/** dist/style",
+    "build": "npm run clean && tsc -p tsconfig.prod.json && npm run copy:styles",
+    "pub": "npm run build && npm publish"
   },
   "peerDependencies": {
     "@emotion/react": "^11.9.0",
@@ -44,8 +47,11 @@
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
     "classnames": "^2.3.1",
+    "copyfiles": "^2.4.1",
+    "cpx": "^1.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rimraf": "^3.0.2",
     "typescript": "^4.7.2"
   }
 }
