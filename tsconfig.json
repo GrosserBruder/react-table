@@ -22,11 +22,16 @@
     "outDir": "dist",
     "declaration": true,
   },
-  // "files": [
-  //   "dist"
-  // ],
   "include": [
-    "src"
+    "Body.tsx",
+    "Cell.tsx",
+    "EditableCell.tsx",
+    "Head.tsx",
+    "HeadCell.tsx",
+    "index.tsx",
+    "Row.tsx",
+    "Table.tsx",
+    "TableWithFixedHeader.tsx",
   ],
   "exclude": [
     "node_modules"
