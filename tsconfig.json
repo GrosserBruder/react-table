@@ -23,15 +23,7 @@
     "declaration": true,
   },
   "include": [
-    "Body.tsx",
-    "Cell.tsx",
-    "EditableCell.tsx",
-    "Head.tsx",
-    "HeadCell.tsx",
-    "index.tsx",
-    "Row.tsx",
-    "Table.tsx",
-    "TableWithFixedHeader.tsx",
+    "src"
   ],
   "exclude": [
     "node_modules"

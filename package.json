@@ -24,6 +24,10 @@
   "files": [
     "dist/**"
   ],
+  "scripts": {
+    "pub": "npm run build && npm publish",
+    "build": "tsc -p tsconfig.prod.json"
+  },
   "peerDependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
