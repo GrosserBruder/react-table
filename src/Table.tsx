@@ -8,25 +8,19 @@ export type TableProps = {
   children: ReactElement<BodyProps | HeadProps>[] | ReactElement<BodyProps | HeadProps>
   className?: string;
   striped?: boolean;
-  separateBorder?: boolean;
   containerProps?: HTMLProps<HTMLDivElement> & {
     className?: string;
   }
-  noBorder?: boolean
-  cellShadow?: boolean
   fixedTopTitle?: boolean
   fixedLeftColumn?: boolean
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function _Table(props: TableProps, ref: ForwardedRef<any>) {
-  const { children, containerProps = {}, cellShadow, noBorder, separateBorder, striped, fixedLeftColumn, fixedTopTitle } = props;
+  const { children, containerProps = {}, striped, fixedLeftColumn, fixedTopTitle } = props;
   const { className: containerClassName, ...otherContainerProps } = containerProps
   const className = classnames('table', props.className, {
     'table--striped': striped,
-    'table--separate-border': separateBorder,
-    'table--no-border': noBorder,
-    'table--cell-shadow': cellShadow,
     'table--fixed-top-title': fixedTopTitle,
     'table--fixed-left-column': fixedLeftColumn,
   })
