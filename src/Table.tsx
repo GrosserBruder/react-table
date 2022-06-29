@@ -20,14 +20,17 @@ export type TableProps = {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function _Table(props: TableProps, ref: ForwardedRef<any>) {
-  const { children, containerProps = {}, cellShadow, noBorder, separateBorder, striped } = props;
+  const { children, containerProps = {}, cellShadow, noBorder, separateBorder, striped, fixedLeftColumn, fixedTopTitle } = props;
   const { className: containerClassName, ...otherContainerProps } = containerProps
   const className = classnames('table', props.className, {
     'table--striped': striped,
     'table--separate-border': separateBorder,
     'table--no-border': noBorder,
     'table--cell-shadow': cellShadow,
+    'table--fixed-top-title': fixedTopTitle,
+    'table--fixed-left-column': fixedLeftColumn,
   })
+
   const newContainerClassName = classnames('table__container', containerClassName)
   return <div className={newContainerClassName} ref={ref} {...otherContainerProps}>
     <table className={className}>

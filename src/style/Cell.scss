@@ -1,0 +1,20 @@
+$border: 1px solid black;
+
+.cell {
+  padding: 0;
+  word-break: break-word;
+  min-width: 150px;
+  width: 150px;
+
+  &__wrapper {
+    border: $border;
+    border-left: unset;
+    border-top: unset;
+  }
+
+  &:first-child {
+    .cell__wrapper {
+      border-left: $border;
+    }
+  }
+}
