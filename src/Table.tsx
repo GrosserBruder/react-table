@@ -15,7 +15,6 @@ export type TableProps = {
   fixedLeftColumn?: boolean
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function _Table(props: TableProps, ref: ForwardedRef<any>) {
   const { children, containerProps = {}, striped, fixedLeftColumn, fixedTopTitle } = props;
   const { className: containerClassName, ...otherContainerProps } = containerProps
