@@ -7,7 +7,6 @@ export type CellProps = TdHTMLAttributes<HTMLElement>
   & {
     children?: ReactNode,
     component?: 'td' | 'th',
-    maxLength?: number,
     editable?: boolean,
     onDoubleClick?: (event: any) => void
     onBlur?: (event: any) => void
@@ -15,7 +14,10 @@ export type CellProps = TdHTMLAttributes<HTMLElement>
   };
 
 function Cell(props: CellProps, ref: any) {
-  const { component: Component = 'td', children, editable, editComponent, onDoubleClick, onBlur, ...rest } = props;
+  const {
+    component: Component = 'td', children, editable, editComponent,
+    onDoubleClick, onBlur, ...rest
+  } = props;
 
   const [isEdit, setIsEdit] = useState(false);
 
