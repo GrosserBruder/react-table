@@ -5,16 +5,29 @@ $border: 1px solid black;
   word-break: break-word;
   min-width: 150px;
   width: 150px;
+  height: 0; // workaround
 
   &__wrapper {
     border: $border;
     border-left: unset;
     border-top: unset;
+    height: 100%;
+    padding: 5px;
   }
 
   &:first-child {
     .cell__wrapper {
       border-left: $border;
+    }
+  }
+
+  &--editable {
+    .cell__wrapper {
+      display: flex;
+      & > * {
+        border-collapse: collapse;
+        width: 100%;
+      }
     }
   }
 }

@@ -4,6 +4,10 @@ $border: 1px solid black;
   --fixed-table-cell-background-color: white;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .table {
   width: 100%;
   table-layout: fixed;
