@@ -1,6 +1,6 @@
 {
   "name": "@grossb/react-table",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "description": "React table component",
   "keywords": [
     "react",
@@ -28,7 +28,9 @@
   "scripts": {
     "clean": "rimraf dist",
     "copy:styles": "cpx src/style/** dist/style",
-    "build": "npm run clean && tsc -p tsconfig.prod.json && npm run copy:styles",
+    "prebuild": "npm run clean",
+    "build": "tsc -p tsconfig.prod.json",
+    "postbuild": "npm run copy:styles",
     "pub": "npm run build && npm publish"
   },
   "peerDependencies": {

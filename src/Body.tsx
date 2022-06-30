@@ -5,7 +5,6 @@ export type BodyProps = HTMLAttributes<HTMLElement> & {
   children: ReactNode[] | ReactNode,
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Body(props: BodyProps, ref: ForwardedRef<any>) {
   const { children, ...rest } = props;
   const className = classnames('body', props.className)
