@@ -55,7 +55,7 @@
 - `--fixed-table-cell-background-color` - задает цвет фона для ячеек, которые находятся в зафиксированных верхнем заголовке или в левом столбце. Значение по умолчанию - `white`.
 - `--table-striped-odd-row-background-color` - цвет фона нечетных строк при `striped=true`. Значение по умолчанию - `#e8eaf6`
 - `--table-striped-even-row-background-color` - цвет фона четных строк при `striped=true`. Значение по умолчанию - `white`
-- `--table-row-hover-background-color` - цвет фона при наведении на строку. Значение по уумолчанию - `#c5cae9`
+- `--table-row-hover-background-color` - цвет фона при наведении на строку. Значение по умолчанию - `#c5cae9`
 
 ## <a name="Пример_использования">Пример использования</a>
 
