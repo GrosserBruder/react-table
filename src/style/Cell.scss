@@ -3,6 +3,7 @@ $border: 1px solid black;
 .cell {
   padding: 0;
   word-break: break-word;
+  height: 0; // workaround -> https://github.com/GrosserBruder/react-table/issues/7
 
   &__wrapper {
     border: $border;
