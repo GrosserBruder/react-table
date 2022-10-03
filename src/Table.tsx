@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import './style/Table.scss'
 
 export type TableProps = {
-  children: ReactElement<BodyProps | HeadProps>[] | ReactElement<BodyProps | HeadProps>
+  children?: ReactElement<BodyProps | HeadProps>[] | ReactElement<BodyProps | HeadProps>
   className?: string;
   striped?: boolean;
   containerProps?: HTMLProps<HTMLDivElement> & {
